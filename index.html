@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>오늘의 공고 | 사회정책·사업기획 채용 일지</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📌</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDF0F3; --sheet:#FFFFFF; --ink:#1D2740; --muted:#5E6678; --line:#CDD3DC;
+  --plum:#7A2E5C; --plum-soft:#F3E6EE; --moss:#3F6B4B; --moss-soft:#E3EEE5;
+  --amber:#A86A12; --amber-soft:#F7ECD9; --grey:#8A909C; --grey-soft:#E7E9ED;
+  --serif:"Gowun Batang","Noto Serif KR","Apple SD Gothic Neo",serif;
+  --sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#141821; --sheet:#1C212C; --ink:#E6E9EF; --muted:#A0A7B5; --line:#333A48;
+    --plum:#D58AB4; --plum-soft:#3A2432; --moss:#8CC09A; --moss-soft:#22332A;
+    --amber:#E0A84F; --amber-soft:#3A2E1A; --grey:#8E95A3; --grey-soft:#2A303C;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#141821; --sheet:#1C212C; --ink:#E6E9EF; --muted:#A0A7B5; --line:#333A48;
+  --plum:#D58AB4; --plum-soft:#3A2432; --moss:#8CC09A; --moss-soft:#22332A;
+  --amber:#E0A84F; --amber-soft:#3A2E1A; --grey:#8E95A3; --grey-soft:#2A303C;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--plum)}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--plum);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+ 
+/* 머리말 */
+header.top{padding:40px 0 12px}
+.top-row{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(2rem,5vw,2.9rem);line-height:1.15;margin:0;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:6px 0 0;font-size:.95rem}
+.theme-btn{background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:6px 14px;font:inherit;font-size:.85rem;cursor:pointer}
+ 
+/* 날짜 띠 */
+.dates{display:flex;gap:8px;overflow-x:auto;padding:18px 0 14px;scrollbar-width:thin}
+.date-tab{flex:0 0 auto;min-width:74px;border:1px solid var(--line);background:var(--sheet);color:var(--ink);border-radius:10px;padding:8px 10px;font:inherit;cursor:pointer;text-align:left;line-height:1.3}
+.date-tab .d{display:block;font-family:var(--serif);font-size:1.15rem;font-weight:700}
+.date-tab .w{font-size:.78rem;color:var(--muted)}
+.date-tab .n{display:block;font-size:.75rem;color:var(--moss);margin-top:2px}
+.date-tab[aria-current="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.date-tab[aria-current="true"] .w,.date-tab[aria-current="true"] .n{color:var(--paper);opacity:.85}
+ 
+.notice{background:var(--amber-soft);color:var(--ink);border-left:3px solid var(--amber);padding:10px 14px;border-radius:4px;font-size:.9rem;margin:0 0 16px}
+ 
+/* 본문 구획 */
+main{padding-bottom:64px}
+section.block{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:24px 24px 20px;margin:0 0 18px}
+h2{font-family:var(--serif);font-size:1.45rem;margin:0 0 4px;font-weight:700}
+.h2-note{color:var(--muted);font-size:.88rem;margin:0 0 16px}
+ 
+/* 요약 */
+.summary-grid{display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:start}
+.count{font-family:var(--serif);font-size:4rem;line-height:1;font-weight:700;color:var(--plum)}
+.count-label{color:var(--muted);font-size:.88rem;margin-top:6px}
+.summary-text p{margin:0 0 10px;max-width:70ch}
+.summary-text strong{font-weight:600}
+ 
+/* 표 */
+.table-scroll{overflow-x:auto;margin:0 -4px}
+table{width:100%;border-collapse:collapse;min-width:820px;font-size:.93rem}
+th{text-align:left;font-weight:500;color:var(--muted);font-size:.82rem;padding:8px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:12px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.rank{font-family:var(--serif);font-size:1.3rem;font-weight:700;width:44px}
+.org{font-weight:600}
+.title{color:var(--muted);font-size:.88rem}
+.badge{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:999px;margin:2px 4px 0 0;white-space:nowrap}
+.b-new{background:var(--moss-soft);color:var(--moss)}
+.b-keep{background:var(--grey-soft);color:var(--muted)}
+.b-soon{background:var(--amber-soft);color:var(--amber);font-weight:600}
+.b-closed{background:var(--grey-soft);color:var(--grey);text-decoration:line-through}
+.b-check{background:var(--plum-soft);color:var(--plum)}
+.dday{font-size:.78rem;color:var(--muted)}
+.dday.soon{color:var(--amber);font-weight:600}
+.score{display:flex;align-items:center;gap:8px;min-width:150px}
+.score-num{font-family:var(--serif);font-weight:700;font-size:1.15rem;width:30px}
+.bar{display:flex;gap:2px;flex:1;height:10px}
+.seg{background:var(--grey-soft);border-radius:2px;overflow:hidden;position:relative}
+.seg i{position:absolute;inset:0 auto 0 0;background:var(--plum);display:block}
+.row-btn{background:none;border:1px solid var(--line);border-radius:6px;color:var(--ink);font:inherit;font-size:.8rem;padding:3px 9px;cursor:pointer;white-space:nowrap}
+tr.detail td{background:var(--paper);padding:14px 16px}
+tr.detail[hidden]{display:none}
+.detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 24px;font-size:.88rem}
+.crit{display:grid;grid-template-columns:86px 1fr 44px;gap:8px;align-items:center;margin:3px 0}
+.crit .bar{height:8px}
+.kv dt{color:var(--muted);font-size:.8rem}
+.kv dd{margin:0 0 8px}
+select.track{font:inherit;font-size:.85rem;padding:4px 8px;border-radius:6px;border:1px solid var(--line);background:var(--sheet);color:var(--ink)}
+ 
+/* 상세 */
+details.deep{border-top:1px solid var(--line);padding:14px 0}
+details.deep:first-of-type{border-top:none}
+details.deep summary{cursor:pointer;list-style:none;display:flex;gap:14px;align-items:baseline}
+details.deep summary::-webkit-details-marker{display:none}
+details.deep summary .rk{font-family:var(--serif);font-size:1.6rem;font-weight:700;color:var(--plum);min-width:28px}
+details.deep summary .tt{font-family:var(--serif);font-size:1.15rem;font-weight:700}
+details.deep summary .tt small{display:block;font-family:var(--sans);font-weight:400;font-size:.88rem;color:var(--muted)}
+.deep-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 32px;margin:14px 0 0 42px}
+.deep-body h3{font-size:.85rem;font-weight:600;color:var(--muted);margin:10px 0 2px}
+.deep-body p{margin:0;max-width:62ch}
+.verdict{grid-column:1/-1;background:var(--plum-soft);border-radius:8px;padding:12px 14px;margin-top:10px}
+.verdict h3{color:var(--plum);margin-top:0}
+ 
+/* 목록 */
+ul.plain{list-style:none;margin:0;padding:0}
+ul.plain li{padding:12px 0;border-top:1px solid var(--line)}
+ul.plain li:first-child{border-top:none}
+ul.plain .why{color:var(--muted);font-size:.9rem;margin:2px 0 0;max-width:70ch}
+ 
+.strategy{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 32px}
+.strategy h3{font-family:var(--serif);font-size:1.05rem;margin:0 0 4px}
+.strategy p{margin:0;max-width:62ch}
+ 
+/* 내 지원 현황 */
+.tracker-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.tcol h3{font-size:.9rem;font-weight:600;margin:0 0 8px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+.tcol[data-s="지원 완료"] h3{border-color:var(--moss)}
+.tcol[data-s="지원 준비"] h3{border-color:var(--plum)}
+.tcol[data-s="관심"] h3{border-color:var(--amber)}
+.tcard{font-size:.85rem;padding:8px 0;border-bottom:1px dashed var(--line)}
+.tcard .dday{display:block}
+.empty{color:var(--muted);font-size:.88rem}
+ 
+footer{color:var(--muted);font-size:.8rem;text-align:center;padding:0 0 32px}
+ 
+@media (max-width:760px){
+  section.block{padding:18px 16px}
+  .summary-grid{grid-template-columns:1fr;gap:10px}
+  .count{font-size:3rem}
+  .deep-body{grid-template-columns:1fr;margin-left:0}
+  .strategy{grid-template-columns:1fr}
+  .tracker-cols{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:no-preference){
+  #content{animation:in .35s ease-out}
+  @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+}
+</style>
+</head>
+<body>
+<header class="top wrap">
+  <div class="top-row">
+    <div>
+      <h1>오늘의 공고</h1>
+      <p class="sub">여성·사회정책 연구와 사회문제 해결 사업기획 분야 채용공고를 매일 오전 9시에 정리함</p>
+    </div>
+    <button class="theme-btn" id="themeBtn" type="button">화면 밝기 바꾸기</button>
+  </div>
+  <nav class="dates" id="dates" aria-label="보고서 날짜"></nav>
+</header>
+ 
+<main class="wrap">
+  <div id="notice"></div>
+  <div id="content"><p class="empty">보고서를 불러오는 중…</p></div>
+ 
+  <section class="block" id="tracker">
+    <h2>내 지원 현황</h2>
+    <p class="h2-note">공고별 ‘진행 상태’에서 고른 내용이 이 브라우저에만 저장되고, 날짜와 상관없이 모여서 보임</p>
+    <div class="tracker-cols" id="trackerCols"></div>
+  </section>
+</main>
+<footer class="wrap">모든 공고는 지원 전 기관 공식 채용 페이지에서 마감일과 자격요건을 다시 확인할 것</footer>
+ 
+<script>
+/* ───────── 예시 데이터: reports 폴더를 찾지 못할 때만 표시 ───────── */
+const SAMPLE = {
+  date: "2026-10-12",
+  summary: {
+    new_count: 3,
+    highlights: "예시 데이터임. 실제 보고서가 올라오면 이 자리에 오늘 주목할 기관과 직무가 표시됨.",
+    trends: "예시 데이터임. 오늘 공고에서 나타난 특징(예: 공익재단 사업기획 공고 증가)이 이 자리에 들어감."
+  },
+  top10: [
+    {rank:1, org:"(예시) ○○여성정책연구기관", title:"성평등 정책 질적연구 담당", type:"전문계약직", region:"서울", deadline:"2026-10-14", salary:"확인 필요", score:88,
+     scores:{interest:28,job:27,career:17,stability:7,growth:9}, status:"신규", masters_required:true, url:"#", source:"예시", verified:false, note:"예시 항목"},
+    {rank:2, org:"(예시) △△공익재단", title:"아동·청년 지원사업 기획", type:"정규직", region:"서울", deadline:"2026-10-25", salary:"내규에 따름", score:81,
+     scores:{interest:25,job:25,career:15,stability:9,growth:7}, status:"신규", masters_required:false, url:"#", source:"예시", verified:false, note:""},
+    {rank:3, org:"(예시) □□시 산하 출연기관", title:"시민참여 정책사업 운영", type:"무기계약직", region:"경기", deadline:"채용 시 마감", salary:"확인 필요", score:72,
+     scores:{interest:20,job:22,career:16,stability:8,growth:6}, status:"유지", masters_required:false, url:"#", source:"예시", verified:false, note:""}
+  ],
+  top3: [
+    {rank:1, overview:"예시 기관 및 직무 개요", duties:"예시 담당 업무", qualifications:"예시 지원 자격 및 우대 조건",
+     fit:"예시: 기존 경력과 연결되는 부분", gaps:"예시: 보완할 역량", emphasize:"예시: 지원 시 강조할 경험",
+     satisfaction:"예시: 예상 직무 만족도", recommendation:"예시: 지원 추천 여부와 근거"}
+  ],
+  additional: [{org:"(예시) ◇◇교육 콘텐츠 기업", title:"사회문제 교육 콘텐츠 기획", url:"#", reason:"예시: 경력 확장 가능성"}],
+  strategy: {first_apply:"예시: 오늘 가장 먼저 지원할 공고", emphasize:"예시: 자기소개서에서 강조할 경험",
+             prepare:"예시: 준비하면 좋은 역량·자격", explore_next:"예시: 내일 추가로 살펴볼 기관과 직무"},
+  closed: []
+};
+ 
+const CRITERIA = [["interest","관심 분야",30],["job","직무",30],["career","경력 활용",20],["stability","안정성·환경",10],["growth","확장성",10]];
+const TRACK_KEY = "jobtrack:v1";
+const STATES = ["관심","지원 준비","지원 완료","패스"];
+const WEEK = ["일","월","화","수","목","금","토"];
+let useSample = false;
+ 
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeUrl = u => /^https?:\/\//i.test(u || "") ? u : "";
+const idOf = j => j.url && j.url !== "#" ? j.url : `${j.org}|${j.title}`;
+ 
+/* 오늘 날짜(한국시간) */
+function todayKST(){
+  const d = new Date(Date.now() + 9*3600*1000);
+  return new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+}
+function dday(deadline){
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(deadline || "")) return null;
+  const [y,m,d] = deadline.split("-").map(Number);
+  return Math.round((Date.UTC(y,m-1,d) - todayKST()) / 86400000);
+}
+function statusOf(j){
+  const n = dday(j.deadline);
+  if(n !== null && n < 0) return "마감";
+  if(n !== null && n <= 3) return "마감임박";
+  return j.status || "유지";
+}
+function statusBadge(s){
+  const cls = {"신규":"b-new","유지":"b-keep","마감임박":"b-soon","마감":"b-closed"}[s] || "b-keep";
+  return `<span class="badge ${cls}">${esc(s)}</span>`;
+}
+function ddayText(deadline){
+  const n = dday(deadline);
+  if(n === null) return `<span class="dday">${esc(deadline || "확인 필요")}</span>`;
+  const label = n < 0 ? "마감됨" : n === 0 ? "오늘 마감" : `D-${n}`;
+  return `<span class="dday ${n>=0 && n<=3 ? "soon":""}">${esc(deadline.slice(5).replace("-","."))} · ${label}</span>`;
+}
+function scoreBar(scores){
+  return `<div class="bar" aria-hidden="true">${CRITERIA.map(([k,,max]) => {
+    const v = Math.max(0, Math.min(max, Number(scores?.[k]) || 0));
+    return `<span class="seg" style="flex:${max}"><i style="width:${v/max*100}%"></i></span>`;
+  }).join("")}</div>`;
+}
+ 
+/* 지원 현황 저장 */
+function readTrack(){ try{ return JSON.parse(localStorage.getItem(TRACK_KEY)) || {}; }catch(e){ return {}; } }
+function writeTrack(t){ try{ localStorage.setItem(TRACK_KEY, JSON.stringify(t)); }catch(e){} }
+ 
+/* 데이터 불러오기 */
+async function loadIndex(){
+  try{
+    const r = await fetch("reports/index.json", {cache:"no-store"});
+    if(!r.ok) throw new Error();
+    const j = await r.json();
+    const list = (j.reports || []).map(x => typeof x === "string" ? {date:x} : x).filter(x => x.date);
+    if(!list.length) throw new Error();
+    return list.sort((a,b) => b.date.localeCompare(a.date));
+  }catch(e){
+    useSample = true;
+    return [{date:SAMPLE.date, new_count:SAMPLE.summary.new_count}];
+  }
+}
+async function loadReport(date){
+  if(useSample) return SAMPLE;
+  const r = await fetch(`reports/${date}.json`, {cache:"no-store"});
+  if(!r.ok) throw new Error(`reports/${date}.json 파일을 찾지 못함`);
+  return r.json();
+}
+ 
+/* 화면 그리기 */
+function renderDates(list, current){
+  document.getElementById("dates").innerHTML = list.slice(0, 30).map(x => {
+    const [y,m,d] = x.date.split("-").map(Number);
+    const w = WEEK[new Date(Date.UTC(y,m-1,d)).getUTCDay()];
+    const n = x.new_count != null ? `<span class="n">신규 ${esc(x.new_count)}</span>` : "";
+    return `<button class="date-tab" type="button" data-date="${esc(x.date)}" aria-current="${x.date===current}">
+      <span class="d">${m}.${d}</span><span class="w">${w}요일</span>${n}</button>`;
+  }).join("");
+}
+ 
+function renderReport(R){
+  const track = readTrack();
+  const top = (R.top10 || []).slice().sort((a,b) => (a.rank||99) - (b.rank||99));
+  const byRank = Object.fromEntries(top.map(j => [j.rank, j]));
+  const S = R.summary || {};
+ 
+  const rows = top.map((j, i) => {
+    const st = statusOf(j);
+    const url = safeUrl(j.url);
+    const cur = track[idOf(j)]?.state || "";
+    const crit = CRITERIA.map(([k,label,max]) => {
+      const v = j.scores?.[k];
+      const has = v !== undefined && v !== null && v !== "";
+      const pct = has ? Math.max(0, Math.min(100, Number(v)/max*100)) : 0;
+      return `<div class="crit"><span>${label}</span><div class="bar"><span class="seg" style="flex:1"><i style="width:${pct}%"></i></span></div><span>${has ? `${esc(v)}/${max}` : "정보 부족"}</span></div>`;
+    }).join("");
+    return `
+    <tr>
+      <td class="rank">${esc(j.rank ?? i+1)}</td>
+      <td><div class="org">${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(j.org)}</a>` : esc(j.org)}</div>
+          <div class="title">${esc(j.title)}</div>
+          ${statusBadge(st)}${j.verified === false ? `<span class="badge b-check">공식 페이지 확인 필요</span>` : ""}${j.masters_required ? `<span class="badge b-keep">석사 필수</span>` : ""}</td>
+      <td>${esc(j.type || "확인 필요")}</td>
+      <td>${esc(j.region || "확인 필요")}</td>
+      <td>${ddayText(j.deadline)}</td>
+      <td><div class="score"><span class="score-num">${esc(j.score ?? "–")}</span>${scoreBar(j.scores)}</div></td>
+      <td><button class="row-btn" type="button" aria-expanded="false" data-toggle="d${i}">자세히</button></td>
+    </tr>
+    <tr class="detail" id="d${i}" hidden><td colspan="7">
+      <div class="detail-grid">
+        <div>${crit}</div>
+        <dl class="kv">
+          <dt>연봉</dt><dd>${esc(j.salary || "공고에 명시 없음")}</dd>
+          <dt>출처</dt><dd>${esc(j.source || "확인 필요")}</dd>
+          ${j.note ? `<dt>메모</dt><dd>${esc(j.note)}</dd>` : ""}
+        </dl>
+        <div><label class="kv"><dt>진행 상태</dt>
+          <select class="track" data-id="${esc(idOf(j))}" data-org="${esc(j.org)}" data-title="${esc(j.title)}" data-deadline="${esc(j.deadline||"")}" data-url="${esc(url)}">
+            <option value="">선택 안 함</option>${STATES.map(s => `<option ${s===cur?"selected":""}>${s}</option>`).join("")}
+          </select></label></div>
+      </div>
+    </td></tr>`;
+  }).join("");
+ 
+  const deep = (R.top3 || []).map((d, i) => {
+    const j = byRank[d.rank] || {};
+    const url = safeUrl(j.url);
+    const part = (h, t) => `<div><h3>${h}</h3><p>${esc(t || "확인 필요")}</p></div>`;
+    return `<details class="deep" ${i===0?"open":""}>
+      <summary><span class="rk">${esc(d.rank)}</span><span class="tt">${esc(j.org || "기관명 확인 필요")}<small>${esc(j.title || "")}</small></span></summary>
+      <div class="deep-body">
+        ${part("기관 및 직무 개요", d.overview)}${part("실제 담당 업무", d.duties)}
+        ${part("지원 자격 및 우대 조건", d.qualifications)}${part("기존 경력과 연결되는 부분", d.fit)}
+        ${part("보완할 역량", d.gaps)}${part("지원 시 강조할 경험", d.emphasize)}
+        ${part("예상 직무 만족도", d.satisfaction)}
+        <div class="verdict"><h3>지원 추천 여부</h3><p>${esc(d.recommendation || "확인 필요")}</p>
+        ${url ? `<p style="margin-top:6px"><a href="${esc(url)}" target="_blank" rel="noopener">공고 원문 열기</a></p>` : ""}</div>
+      </div></details>`;
+  }).join("");
+ 
+  const extra = (R.additional || []).map(a => {
+    const url = safeUrl(a.url);
+    return `<li><strong>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(a.org)}</a>` : esc(a.org)}</strong> ${esc(a.title)}
+      <p class="why">${esc(a.reason)}</p></li>`;
+  }).join("");
+ 
+  const closed = (R.closed || []).map(c => `<li><strong>${esc(c.org)}</strong> ${esc(c.title)}<p class="why">${esc(c.note || "")}</p></li>`).join("");
+  const G = R.strategy || {};
+ 
+  document.getElementById("content").innerHTML = `
+  <section class="block">
+    <div class="summary-grid">
+      <div><div class="count">${esc(S.new_count ?? 0)}</div><div class="count-label">오늘 새로 확인된 적합 공고</div></div>
+      <div class="summary-text">
+        <p><strong>주목할 기관·직무</strong> ${esc(S.highlights || "해당 없음")}</p>
+        <p><strong>오늘 공고의 특징</strong> ${esc(S.trends || "해당 없음")}</p>
+      </div>
+    </div>
+  </section>
+ 
+  <section class="block">
+    <h2>추천 공고 TOP 10</h2>
+    <p class="h2-note">막대는 관심 분야(30)·직무(30)·경력 활용(20)·안정성(10)·확장성(10) 순서의 점수임. 마감 3일 이내 공고는 자동으로 ‘마감임박’ 표시됨</p>
+    ${top.length ? `<div class="table-scroll"><table>
+      <thead><tr><th>순위</th><th>기관·직무</th><th>고용형태</th><th>지역</th><th>마감</th><th>적합도</th><th></th></tr></thead>
+      <tbody>${rows}</tbody></table></div>` : `<p class="empty">오늘은 조건에 맞는 공고가 확인되지 않음</p>`}
+  </section>
+ 
+  ${deep ? `<section class="block"><h2>최우선 추천 TOP 3</h2><p class="h2-note">제목을 눌러 펼치고 접을 수 있음</p>${deep}</section>` : ""}
+ 
+  ${extra ? `<section class="block"><h2>추가 검토 공고</h2><p class="h2-note">관심 분야와 완전히 겹치지 않지만 경력 확장 가능성이 큰 공고</p><ul class="plain">${extra}</ul></section>` : ""}
+ 
+  <section class="block">
+    <h2>오늘의 지원 전략</h2>
+    <div class="strategy">
+      <div><h3>가장 먼저 지원할 공고</h3><p>${esc(G.first_apply || "해당 없음")}</p></div>
+      <div><h3>자기소개서·경력기술서 강조점</h3><p>${esc(G.emphasize || "해당 없음")}</p></div>
+      <div><h3>준비하면 좋은 역량·자격</h3><p>${esc(G.prepare || "해당 없음")}</p></div>
+      <div><h3>다음에 살펴볼 기관·직무</h3><p>${esc(G.explore_next || "해당 없음")}</p></div>
+    </div>
+  </section>
+ 
+  ${closed ? `<section class="block"><h2>마감되었거나 접수 여부가 불분명한 공고</h2><ul class="plain">${closed}</ul></section>` : ""}`;
+}
+ 
+function renderTracker(){
+  const t = readTrack();
+  const items = Object.entries(t).map(([id,v]) => ({id, ...v}));
+  document.getElementById("trackerCols").innerHTML = STATES.map(s => {
+    const list = items.filter(x => x.state === s).sort((a,b) => (a.deadline||"9").localeCompare(b.deadline||"9"));
+    return `<div class="tcol" data-s="${s}"><h3>${s} ${list.length}</h3>${
+      list.length ? list.map(x => `<div class="tcard">${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.org)}</a>` : esc(x.org)}
+        <div class="title">${esc(x.title)}</div>${ddayText(x.deadline)}</div>`).join("") : `<p class="empty">없음</p>`}</div>`;
+  }).join("");
+}
+ 
+/* 이벤트 */
+document.addEventListener("click", e => {
+  const tab = e.target.closest(".date-tab");
+  if(tab){ location.hash = tab.dataset.date; return; }
+  const btn = e.target.closest("[data-toggle]");
+  if(btn){
+    const row = document.getElementById(btn.dataset.toggle);
+    row.hidden = !row.hidden;
+    btn.setAttribute("aria-expanded", String(!row.hidden));
+    btn.textContent = row.hidden ? "자세히" : "접기";
+  }
+});
+document.addEventListener("change", e => {
+  const sel = e.target.closest("select.track");
+  if(!sel) return;
+  const t = readTrack();
+  if(sel.value) t[sel.dataset.id] = {state:sel.value, org:sel.dataset.org, title:sel.dataset.title, deadline:sel.dataset.deadline, url:sel.dataset.url};
+  else delete t[sel.dataset.id];
+  writeTrack(t);
+  renderTracker();
+});
+document.getElementById("themeBtn").addEventListener("click", () => {
+  const root = document.documentElement;
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+  try{ localStorage.setItem("jobtrack:theme", root.dataset.theme); }catch(e){}
+});
+try{ const th = localStorage.getItem("jobtrack:theme"); if(th) document.documentElement.dataset.theme = th; }catch(e){}
+ 
+let INDEX = [];
+async function show(){
+  const date = decodeURIComponent(location.hash.slice(1)) || INDEX[0].date;
+  const target = INDEX.find(x => x.date === date) ? date : INDEX[0].date;
+  renderDates(INDEX, target);
+  document.querySelector(`.date-tab[data-date="${target}"]`)?.scrollIntoView({block:"nearest", inline:"nearest"});
+  try{
+    renderReport(await loadReport(target));
+  }catch(err){
+    document.getElementById("content").innerHTML = `<section class="block"><p class="empty">${esc(err.message)}. reports 폴더에 해당 날짜 파일이 올라갔는지 확인할 것</p></section>`;
+  }
+}
+(async () => {
+  INDEX = await loadIndex();
+  if(useSample) document.getElementById("notice").innerHTML =
+    `<p class="notice">예시 데이터를 보여주는 중임. 저장소에 <strong>reports/index.json</strong>과 날짜별 보고서 파일을 올리면 실제 보고서가 표시됨</p>`;
+  window.addEventListener("hashchange", show);
+  await show();
+  renderTracker();
+})();
+</script>
+</body>
+</html>
+ 
